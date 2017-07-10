@@ -20,6 +20,9 @@ for $resindex (0..$#resolutions){
   while(<$FH>){
     chomp;
     my ($chr,$val)=(split/\s/)[0,3];
+    if($val eq '') { $val=''; }
+    elsif($val>0) { $val=1/$val; }
+    elsif($val==0) { $val=''; }
     push @{$array{$chr}}, $val;
   }
   close $FH;
