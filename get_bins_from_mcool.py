@@ -4,7 +4,7 @@ import numpy as np
 
 def dump_bins_from_mcool(input_mcool_file, output_text_file, resolution_index_str):
       fo=open(output_text_file, 'a+')
-      with h5py.File(input_mcool_file, 'r+') as f:
+      with h5py.File(input_mcool_file, 'r') as f:
           c=cooler.Cooler(f[resolution_index_str])
           selector = c.bins()
           n = c.info['nbins']
