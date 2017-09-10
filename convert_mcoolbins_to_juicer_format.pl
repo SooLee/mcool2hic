@@ -2,14 +2,12 @@
 
 ### WARNING : This code contains some HARDCODED elements - FIX IT ASAP ###
 
-
-#@resolutions = reverse (5000,10000,20000,40000,80000,160000,320000,640000,1280000,2560000,5120000,10240000,2048000);  #### WARNING : HARDCODED ####
 @chrlist = map { "chr$_" } (1..22, 'X', 'Y', 'M');  #### WARNING : HARDCODED ####
 
 
-if(@ARGV<2) { print "usage: $0 file_prefix resolutions(comma-delimited,high-to-low) outfile\n"; exit; }
+if(@ARGV<3) { print "usage: $0 file_prefix resolutions(comma-delimited,low-to-high(e.g. 5000,10000,20000) outfile\n"; exit; }
 $file_prefix = shift @ARGV;
-@resolutions = split /,/ shift @ARGV;
+@resolutions = reverse split /,/, (shift @ARGV);
 $outfile = shift @ARGV;
 
 open FW, ">$outfile";
