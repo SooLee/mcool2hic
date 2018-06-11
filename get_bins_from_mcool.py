@@ -12,7 +12,7 @@ def dump_bins_from_mcool(input_mcool_file, output_text_file, resolution_index_st
           else:
               raise Exception("Newer version of cool needs resolution_str (e.g. '5000') and older version needs resolution index (e.g. '0')")
           c=cooler.Cooler(single_cool)
-          selector = c.bins()
+          selector = c.bins()[['chrom', 'start', 'end', 'weight']]
           n = c.info['nbins']
           chunksize = n
           # write in chunks
